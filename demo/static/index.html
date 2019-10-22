@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>文案管理-demo</title>
+    <style>
+      .btn {
+        width: 60px; 
+        height: 50px; 
+        display: inline-block; 
+        background: rgb(135, 208, 104); 
+        color: #fff; 
+        text-align: center;
+        vertical-align: middle;
+        line-height: 50px;
+        cursor: pointer;
+        box-shadow: 0 0 5px #ccc;
+        border-radius: 5px;
+      }
+
+      #language {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <button id="language" onclick="change()">English</button>
+      <div style="margin: 50px">
+        <span data-tip-id="demo-1" class="btn">按钮</span>
+      </div>
+      <p style="margin-left: 50px; color: #666">
+        <span data-tip-id="demo-2">docsm是一个静态文案管理系统。用于修改Web端页面的静态文案，支持文案国际化，并提供提示信息的UI展示。</span>
+      </p>
+      <p style="margin: 50px; color: red">打开右下角开关可看到红色编辑按钮，点击红色编辑按钮，即可修改文案</p>
+    </div>
+    <script>
+      try {
+        if (window.DocsM && Object.prototype.toString.call(window.DocsM.init) === '[object Function]') {
+          window.DocsM.init('admin', 'zh_CN');
+        } else {
+          document.addEventListener('DocsMSDKReady', function() {
+            window.DocsM.init('admin', 'zh_CN');
+          }, false);
+        }
+      } catch(e) {
+        console.log(e);
+      }
+
+      function change() {
+        var language;
+        var text = document.getElementById('language');
+        if (text.innerHTML === '中文') {
+          language = 'zh_CN';
+          text.innerHTML = 'English'
+        } else {
+          text.innerHTML = '中文';
+          language = 'en_US';
+        }
+        window.DocsM.changeLanguage(language);
+      }
+    </script>
+    <script type="text/javascript" data-service="docsm" src="./docsm.js"></script>
+  </body>
+</html>

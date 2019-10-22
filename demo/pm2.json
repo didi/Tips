@@ -1,0 +1,14 @@
+{
+  "apps": [{
+    "name": "demo",
+    "script": "./app.js",
+    "instances": "4",
+    "log_date_format": "YYYY-MM-DD HH:mm:ss",
+    "max_memory_restart": "300M",
+    "log_file": "./logs/app-log.log",
+    "error_file": "./logs/app-err.log",
+    "out_file": "./logs/app-out.log",
+    "merge_logs": true,
+    "exec_mode": "cluster_mode"
+  }]
+}

@@ -1,0 +1,43 @@
+.card-plus {
+	height: 170px;
+	margin: 10px;
+  transition: all .3s;
+}
+
+.card-plus:hover {
+  box-shadow: 0 0 5px #ccc;
+}
+
+.card-plus .ant-card-head {
+	height: 30px;
+	min-height: 30px;
+	border-bottom: 0;
+}
+
+.card-plus .ant-card-head .ant-card-head-wrapper .ant-card-head-title {
+	padding: 5px 0;
+}
+
+.card-plus .ant-card-head .ant-card-head-wrapper .ant-card-extra span {
+	color: #bbb;
+	cursor: pointer;
+}
+
+.card-content {
+	height: 80px;
+	color: #bbb;
+}
+
+.card-footer {
+	height: 30px;
+	display: flex;
+	justify-content: space-between;
+	padding-top: 5px;
+	color: #ddd;
+}
+
+.add-btn {
+	color: #1890ff;
+	cursor: pointer;
+}
+

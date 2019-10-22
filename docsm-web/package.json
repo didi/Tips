@@ -1,0 +1,24 @@
+{
+  "name": "docsm-web",
+  "version": "0.0.1",
+  "description": "docsm-web",
+  "scripts": {
+    "start": "RUN_ENV=online pm2 start pm2.json",
+    "dev": "RUN_ENV=dev nodemon app.js",
+    "eslint": "eslint --fix .eslintrc.js"
+  },
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "moment": "^2.24.0",
+    "mongoose": "^5.3.4",
+    "promise": "^8.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "nodemon": "^1.19.2",
+    "pm2": "^3.5.1"
+  }
+}
