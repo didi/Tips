@@ -33,7 +33,7 @@ DocsM是一个静态文案管理平台。用于修改Web页面的静态文案，
 
 - 简单介绍：该模块是一个简单的Web层，提供文案数据的增删改查接口，即所有的UI操作接口都调用这里。在上面有提到有权限的用户才可以直接对文案进行编辑，所以平台涉及到权限控制的地方都需要用户信息，这里由于每个公司机构关于用户信息的管理都有自己的一套机制，所以需要使用者单独实现。实现完成后将服务部署即可。
 - 部署
-- 第一步：修改docsm-web/src/config/index.js中的MongoDB数据地址，和真实服务的端口；
+- 第一步：修改`docsm-web/src/config/index.js`中的MongoDB数据地址，和真实服务的端口；
 - 第二步：将服务部署；
 - 第三步：启动服务，`npm run start`;
 #### docsm-ui
@@ -42,10 +42,10 @@ DocsM是一个静态文案管理平台。用于修改Web页面的静态文案，
 - 第一步：打包，`npm run build`；
 - 第二步：将打包后的静态文件部署至nginx或其它静态文件服务；
 #### docsm-sdk
-- 简单介绍：该模块是用webpack管理的一个js SDK，我们在上面图片中看到的关于修改文案的操作都在此模块实现，该模块打包后的文件最终以CDN服务的形式引用在接入平台中。
+- 简单介绍：该模块是用webpack管理的一个`js SDK`，我们在上面图片中看到的关于修改文案的操作都在此模块实现，该模块打包后的文件最终以CDN服务的形式引用在接入平台中。
 - 部署
-- 第一步：修改docsm-sdk/src/config/index.js中的server地址，改为docsm-web服务的地址；
-- 第二步：我们使用webpack对SDK进行管理，在webpack.config.js文件中写了打包后的路径，你只用去修改里面的路径，即可打包至你自己的目录；
+- 第一步：修改`docsm-sdk/src/config/index.js`中的server地址，改为`docsm-web`服务的地址；
+- 第二步：我们使用webpack对SDK进行管理，在`webpack.config.js`文件中写了打包后的路径，你只用去修改里面的路径，即可打包至你自己的目录；
 - 第三步：将打包后的sdk进行部署到CDN服务；
 ### 使用
 当上面的部署流程都完成，服务可以正常访问后，我们就可以让需要文案管理的服务接入使用了。
@@ -69,7 +69,7 @@ DocsM是一个静态文案管理平台。用于修改Web页面的静态文案，
 ```
 参数解释：
 - `data-service`：此处传入第一步创建时填写的系统唯一标识；
-- `src`：此处地址为docsm-sdk打包后静态文件的部署地址；
+- `src`：此处地址为`docsm-sdk`打包后静态文件的部署地址；
 
 #### 第三步：调用SDK
 
@@ -114,9 +114,3 @@ try {
 }
 ```
 已上涉及到代码的都可查看[demo](./demo/static/index.html)中如何使用,其它一些附加功能请看[这里](./doc/otherFUnc.md)
-
-## Contributing
-Any contribution is welcome. All issues and pull requests are highly appreciated! For more details, please refer to the [contribution guide](./CONTRIBUTING.md).
-
-## License
-The DELTA platform is licensed under the terms of the Apache license. See [LICENSE](./LICENSE) for more information.
