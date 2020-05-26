@@ -17,11 +17,11 @@ class BasicLayout extends Component {
   componentDidMount() {
     try {
       const { language } = this.state;
-      if (window.DocsM && Object.prototype.toString.call(window.DocsM.init) === '[object Function]') {
-        window.DocsM.init('admin', language);
+      if (window.Tips && Object.prototype.toString.call(window.Tips.init) === '[object Function]') {
+        window.Tips.init('admin', language);
       } else {
-        document.addEventListener('DocsMSDKReady', function() {
-          window.DocsM.init('admin', language);
+        document.addEventListener('TipsSDKReady', function() {
+          window.Tips.init('admin', language);
         }, false);
       }
     } catch(e) {
@@ -36,7 +36,7 @@ class BasicLayout extends Component {
       this.setState({
         language: currentLanguage,
       });
-      window.DocsM.changeLanguage(currentLanguage);
+      window.Tips.changeLanguage(currentLanguage);
     } catch(e) {
       throw new Error(e);
     }
