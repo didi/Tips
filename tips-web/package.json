@@ -1,7 +1,7 @@
 {
-  "name": "docsm-web",
+  "name": "tips-web",
   "version": "0.0.1",
-  "description": "docsm-web",
+  "description": "tips-web",
   "scripts": {
     "start": "RUN_ENV=online pm2 start pm2.json",
     "dev": "RUN_ENV=dev nodemon app.js",

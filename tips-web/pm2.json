@@ -1,6 +1,6 @@
 {
   "apps": [{
-    "name": "docsm-web",
+    "name": "tips-web",
     "script": "./app.js",
     "instances": "4",
     "log_date_format": "YYYY-MM-DD HH:mm:ss",

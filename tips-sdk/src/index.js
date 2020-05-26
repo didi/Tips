@@ -5,7 +5,7 @@ import Core from './core';
 import Switch from './common/switch';
 import Config from './config';
 
-window.DocsM = {
+window.Tips = {
   init(username, language) {
     if (language && language.indexOf('-') > -1) { // 兼容en-US这种
       language = language.replace(/-/g, '_');
@@ -43,20 +43,20 @@ window.DocsM = {
   },
 };
 
-function renderDocsM () {
+function renderTips () {
   Notification.initCssStyle(); // 初始化通知框的样式
   ContentRequest.initDocumentContent(); // 从服务端拉下数据，在本地进行初始化
   EventProxy.initEventProxy();
   if (window.dispatchEvent) { // 加载完了触发自定义函数
-    window.document.dispatchEvent(new Event('DocsMSDKReady'));
+    window.document.dispatchEvent(new Event('TipsSDKReady'));
   } else {
-    window.document.fireEvent(new Event('DocsMSDKReady'));
+    window.document.fireEvent(new Event('TipsSDKReady'));
   }
 }
 
 
 try {
-  renderDocsM();
+  renderTips();
 } catch(err) {
   throw new Error(err);
 }

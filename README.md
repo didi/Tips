@@ -1,10 +1,10 @@
-# DocsM - DOCumentS Management platform
+# Tips - 文案管理平台
 
 > [English Introduction](./README_en.md)
 
-## DocsM是什么？
-DocsM是一个静态文案管理平台。用于修改Web页面的静态文案，支持文案国际化，并提供提示信息的UI展示。它的目的是解决前端开发者频繁的静态文案修改问题，避免因为简单的文案修改而发起复杂的上线流程。
-## DocsM可以做什么？
+## Tips是什么？
+Tips是一个静态文案管理平台。用于修改Web页面的静态文案，支持文案国际化，并提供提示信息的UI展示。它的目的是解决前端开发者频繁的静态文案修改问题，避免因为简单的文案修改而发起复杂的上线流程。
+## Tips可以做什么？
 下面是一个简单的演示，展现了接入文案管理平台后你可以通过如下的方式去修改页面上的文案信息。
 - 提示内容文案修改
 <img src="./doc/static/tips.gif">
@@ -22,30 +22,30 @@ DocsM是一个静态文案管理平台。用于修改Web页面的静态文案，
 ## 如何查看demo
 - 安装node环境，版本v8及已上
 - 安装数据库mongodb，版本v4
-- 创建 `docsm` 数据库
+- 创建 `tips` 数据库
 - 启动项目：`sh start.sh`
-- 在浏览器打开localhost:8090 ---> 点击新增项目 ---> 创建项目，系统名：docsm，多语言：中文和英文，提交保存 ---> 点击导航栏的demo，跳到demo页可进行文案修改
+- 在浏览器打开localhost:8090 ---> 点击新增项目 ---> 创建项目，系统名：tips，多语言：中文和英文，提交保存 ---> 点击导航栏的demo，跳到demo页可进行文案修改
 
 ## 如何部署使用
 
 ### 部署
 
-#### docsm-web 
+#### tips-web 
 
 - 简单介绍：该模块是一个简单的Web层，提供文案数据的增删改查接口，即所有的UI操作接口都调用这里。在上面有提到有权限的用户才可以直接对文案进行编辑，所以平台涉及到权限控制的地方都需要用户信息，这里由于每个公司机构关于用户信息的管理都有自己的一套机制，所以需要使用者单独实现。实现完成后将服务部署即可。
 - 部署
-- 第一步：修改`docsm-web/src/config/index.js`中的MongoDB数据地址，和真实服务的端口；
+- 第一步：修改`tips-web/src/config/index.js`中的MongoDB数据地址，和真实服务的端口；
 - 第二步：将服务部署；
 - 第三步：启动服务，`npm run start`;
-#### docsm-ui
+#### tips-ui
 - 简单介绍：该模块为管理前端模块，在这里对接入平台的文案信息进行管理。同样也需要调用Web层的关于用户信息操作的接口，这部分需要自己单独实现。
 - 部署
 - 第一步：打包，`npm run build`；
 - 第二步：将打包后的静态文件部署至nginx或其它静态文件服务；
-#### docsm-sdk
+#### tips-sdk
 - 简单介绍：该模块是用webpack管理的一个`js SDK`，我们在上面图片中看到的关于修改文案的操作都在此模块实现，该模块打包后的文件最终以CDN服务的形式引用在接入平台中。
 - 部署
-- 第一步：修改`docsm-sdk/src/config/index.js`中的server地址，改为`docsm-web`服务的地址；
+- 第一步：修改`tips-sdk/src/config/index.js`中的server地址，改为`tips-web`服务的地址；
 - 第二步：我们使用webpack对SDK进行管理，在`webpack.config.js`文件中写了打包后的路径，你只用去修改里面的路径，即可打包至你自己的目录；
 - 第三步：将打包后的sdk进行部署到CDN服务；
 ### 使用
@@ -66,22 +66,22 @@ DocsM是一个静态文案管理平台。用于修改Web页面的静态文案，
 
 在接入系统中引入SDK文件，并设置在创建系统时填写的系统名，放在<head>中（存在文档修改，为了避免页面空白，如果系统中不使用文档修改功能，可以不放在<head>中）。代码如下：
 ```
-<script type="text/javascript" data-service="xxx" src="/docsm.js"></script>
+<script type="text/javascript" data-service="xxx" src="/tips.js"></script>
 ```
 参数解释：
 - `data-service`：此处传入第一步创建时填写的系统唯一标识；
-- `src`：此处地址为`docsm-sdk`打包后静态文件的部署地址；
+- `src`：此处地址为`tips-sdk`打包后静态文件的部署地址；
 
 #### 第三步：调用SDK
 
 在接入系统的前端代码中调用初始化函数，传入当前系统登录用户名和语言类型，代码如下：
 ```
 try {
-  if (window.DocsM && Object.prototype.toString.call(window.DocsM.init) === '[object Function]') {
-    window.DocsM.init(username, language);
+  if (window.Tips && Object.prototype.toString.call(window.Tips.init) === '[object Function]') {
+    window.Tips.init(username, language);
   } else {
-    document.addEventListener("DocsMSDKReady", function() {
-      window.DocsM.init(username, language);
+    document.addEventListener("TipsSDKReady", function() {
+      window.Tips.init(username, language);
     }, false);
   }
 } catch(e) {
@@ -104,14 +104,14 @@ try {
 在接入系统的前端代码中埋点，以前端页面路由为维度，每个路由下埋点的id不能重复。
 ```
 <span data-tip-id="demo-1" class="btn">按钮</span>
-<span data-tip-id="demo-2">docsm是一个静态文案管理系统。用于修改Web端页面的静态文案，支持文案国际化，并提供提示信息的UI展示。</span>
+<span data-tip-id="demo-2">tips是一个静态文案管理系统。用于修改Web端页面的静态文案，支持文案国际化，并提供提示信息的UI展示。</span>
 ```
 #### 第五步：切换语言
 
 调用切换语言代码如下：
 ```
 try {
-  window.DocsM.changeLanguage(language);
+  window.Tips.changeLanguage(language);
 } catch(e) {
   console.log(e);
 }
@@ -120,4 +120,4 @@ try {
 
 ## 协议
 
-DocsM 基于 Apache 协议进行分发和使用，更多信息参见[协议文件](./LICENSE)。 
+Tips 基于 Apache 协议进行分发和使用，更多信息参见[协议文件](./LICENSE)。 

@@ -1,10 +1,10 @@
 # 启动脚本
-cd docsm-sdk
+cd tips-sdk
 npm i
 npm run build
-cp ../docsm-ui/public/docsm.js ../demo/static
+cp ../tips-ui/public/tips.js ../demo/static
 
-cd ../docsm-web
+cd ../tips-web
 npm i
 npm start
 
@@ -12,7 +12,7 @@ cd ../demo
 npm i
 npm start
 
-cd ../docsm-ui
+cd ../tips-ui
 npm i
 npm start
 
